@@ -1,4 +1,4 @@
-FROM node:12.18-alpine
+FROM node:17.9-alpine
 
 LABEL mantainer="Andre Carvalho <afacarvalho@yahoo.com.br>"
 
@@ -9,17 +9,17 @@ ENV NPM_CONFIG_LOGLEVEL warn
 
 # Install app dependencies
 RUN npm install \
-&& npm install pm2 -g \
-&& pm2 install pm2-server-monit \
-&& pm2 install pm2-logrotate
+&& npm install pm2 -g
+# && pm2 install pm2-server-monit \
+# && pm2 install pm2-logrotate
 
+COPY ./docker/setenv.sh .
 COPY ./src .
-COPY ./pm2.json .
 COPY ./LICENSE .
+COPY ./ecosystem.config.cjs .
+RUN chmod +x setenv.sh
 
-ENV PORT 9000
-EXPOSE 9000
-#ENV CONF_PATH /data/conf
-#VOLUME ["${CONF_PATH}","/logs"]
+EXPOSE 3000
 VOLUME ["/data/logs"]
-CMD ["pm2-runtime", "--env", "production", "start", "pm2.json"]
+
+ENTRYPOINT [ "./setenv.sh" ]
