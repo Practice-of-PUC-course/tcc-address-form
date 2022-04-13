@@ -14,7 +14,7 @@ RUN npm install \
 # && pm2 install pm2-logrotate
 
 COPY ./docker/setenv.sh .
-COPY ./src .
+COPY ./src ./src
 COPY ./LICENSE .
 COPY ./ecosystem.config.cjs .
 RUN chmod +x setenv.sh

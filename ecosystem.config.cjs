@@ -1,7 +1,7 @@
 module.exports = {
     apps: [{
         name: "tcc-address-form",
-        script: "server.js",
+        script: "src/server.js",
         exec_mode: "cluster",
         instances: 1,
         output: "/data/logs/out.log",
