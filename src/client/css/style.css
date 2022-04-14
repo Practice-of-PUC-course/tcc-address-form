@@ -17,9 +17,12 @@
     font-size: 0.9rem;
 }
 #general-info{
-    display: none;
-    width: 90%;
-    padding-left: 25px;
+    display: inline-flex;
+    width: 60%;
+    position: absolute;
+    right: 10px;
+    height: 35px;
+    align-items: center;
 }
 #save-btn{
     display: none;

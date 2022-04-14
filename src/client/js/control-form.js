@@ -37,6 +37,8 @@
                 mainMap.addMarker(ll,values);
                 controlForm.displayGeneralMessage(controlForm.userdata.user.name+", seu endereço já foi cadastrado.");
             }else{
+                let v={street:'',housenumber:'',county:'',state:''};
+                controlForm.setFieldValues(v);
                 controlForm.displayGeneralMessage(controlForm.userdata.user.name+", cadastre seu endereço.");
             }
         });
@@ -130,12 +132,12 @@
     },
 
     displayGeneralMessage:function(msg){
-        setTimeout(
-            ()=>{
-                $('#general-info').attr('style','display:none;');
-            },3000
-        )
-        $('#general-info').attr('style','display:block;');
+        // setTimeout(
+        //     ()=>{
+        //         $('#general-info').attr('style','display:none;');
+        //     },3000
+        // )
+        // $('#general-info').attr('style','display:inline-flex;');
         $('#general-notes').html(msg);
     }
 };
