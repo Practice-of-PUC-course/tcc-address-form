@@ -13,3 +13,11 @@
 .blockquote{
     font-size: 0.9rem !important;
 }
+#general-notes{
+    font-size: 0.9rem;
+}
+#general-info{
+    display: none;
+    width: 90%;
+    padding-left: 25px;
+}

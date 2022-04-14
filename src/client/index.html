@@ -12,7 +12,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta name="author" content="André Carvalho - afacarvalho@yahoo.com.br">
 		<title>A simple client to test the Address and Geocode APIs</title>
-		<link href="css/libs/bootstrap.min.css" rel="stylesheet">
+		<link href="css/libs/bootstrap-4.3.1/bootstrap.min.css" rel="stylesheet"/>
 		<link href="css/libs/leaflet.min.css" rel="stylesheet">
 		<link href="css/glyphicons.css" rel="stylesheet">
 		<link href="css/style.css" rel="stylesheet">
@@ -28,6 +28,9 @@
 					<a href="javascript:model.resetDatabaseModel();" title="Reset the database model to predefined simulated data (mock).">
 						<span style="color: brown;" class="glyphicon glyphicon-cog"></span>
 					</a>
+					<div id="general-info" class="alert alert-dismissable alert-info">
+						<span id="general-notes"></span>
+					</div>
 					<hr>
 				</div>
 			</div>
@@ -44,13 +47,14 @@
 
 							<div id="location-form" class="form-block">
 								<div class="form-group">
-									<div class="dropdown">
-										<button class="btn btn-secondary dropdown-toggle" type="button" id="userlist" data-bs-toggle="dropdown" aria-expanded="false">
+									
+									<div class="btn-group">
+										<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 											Usuários (selecione)
 										</button>
-										<ul id="useritens" class="dropdown-menu" aria-labelledby="userlist">
-										</ul>
-									</div>
+										<div id="useritens" class="dropdown-menu"></div>
+									</div><br />
+
 									<label for="street">
 										logradouro
 									</label>
@@ -96,23 +100,13 @@
 			</footer>
 		</div>
 		<script src="js/libs/jquery.min.js"></script>
-		<script src="js/libs/leaflet-1.7.1-min.js"></script> 
+		<script src="js/libs/leaflet-1.7.1-min.js"></script>
+		<script src="js/libs/popper/1.11.0/popper.min.js"></script>
+    	<script src="js/libs/bootstrap-4.3.1/bootstrap.min.js"></script>
 		<script src="js/conf.js"></script>
 		<script src="js/start-client.js"></script>
+		<script src="js/control-form.js"></script>
 		<script src="js/api-client.js"></script>
 		<script src="js/map.js"></script>
 	</body>
 </html>
-
-<!--
-<button id="balance-btn" type="button" class="btn btn-success">
-	Find Geocode
-</button>
-<button id="balance-btn" type="button" class="btn btn-success">
-	Save Address
-</button>
-<button id="model-reset-btn" type="button" class="btn btn-danger">
-	Model reset
-</button>
-
--->

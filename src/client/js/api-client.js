@@ -21,8 +21,8 @@ var model={
     resetDatabaseModel:function(){
         if(confirm("A base de dados será restaurada aos padrões de teste. Confirma?")){
             api.call(this.path,(res)=>{
-                console.log("Ok, base de dados recriada. res:"+res);
-            });
+                controlForm.displayGeneralMessage("Ok, base de dados recriada.");
+            }, 'POST');
         }
     }
 };
