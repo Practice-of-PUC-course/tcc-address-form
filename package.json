@@ -1,6 +1,6 @@
 {
   "name": "tcc-address-form",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A simple client to test the Address and Geocode APIs",
   "main": "src/server.js",
   "type": "module",
