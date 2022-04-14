@@ -1,12 +1,14 @@
 var api={
-    call:function(baseUrl,fn,method,data){
+    call:function(baseUrl,fn,method,data,cache){
         if(!method) method='GET';
         if(!data) data={};
-        $.ajax( {cache: false, url: baseUrl,type: method, data} )
+        if(!cache) cache={cache: true};
+        $.ajax( {url: baseUrl,type: method, data} )
             .done(function(response) {
-                fn(response)
+                fn(response);
             })
             .fail(function(reason) {
+                fn(false);
                 console.error(JSON.stringify(reason));
             })
             .always(function() {
@@ -34,8 +36,11 @@ var address={
         api.call(this.path+"/"+userid,fn);
     },
 
-    createAddress:function(userid,fn){
-        api.call(this.path+"/"+userid,fn,'POST');
+    saveAddress:function(qs,isAdd,fn){
+        if(isAdd)
+            api.call(this.path+"/"+qs,fn,'POST');
+        else
+            api.call(this.path+"/"+qs,fn,'PUT');// addressid is needed!
     }
 
 };
@@ -73,7 +78,6 @@ var geo={
         "&number="+formValues.housenumber+
         "&county="+formValues.county+
         "&state="+formValues.state;
-        params=encodeURIComponent(params);
         api.call(this.path+"/"+params,fn);
     }
 };

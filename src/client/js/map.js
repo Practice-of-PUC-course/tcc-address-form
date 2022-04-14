@@ -4,6 +4,7 @@
 var mainMap={
     map:null,// reference to leaflet map component
     mainLayer: null,// reference to main leaflet layer based on geojson raw data.
+    marker: null, // reference of added marker
     defaultZoomLevel:4,// the zoom level used to reset view map
     info:L.control(),
     observer:null,
@@ -139,9 +140,47 @@ var mainMap={
             style: mainMap.style,
             onEachFeature: mainMap.onEachFeature
         }).addTo(mainMap.map);
-        mainMap.map.bringToFront();
+        mainMap.mainLayer.bringToFront();
         
         //mainMap.map.fitBounds(mainMap.mainLayer.getBounds());
+    },
+
+    addMarker: (location, values)=>{
+        if(mainMap.marker){
+            mainMap.map.removeLayer(mainMap.marker);
+        }
+        const markerIcon = L.icon({
+            iconSize: [25, 41],
+            iconAnchor: [10, 41],
+            popupAnchor: [2, -40],
+            // specify the path here
+            iconUrl: "imgs/marker-icon.png",
+            shadowUrl: "imgs/marker-shadow.png"
+        });
+
+        let popupInfo="<b>Seu endereço é aqui?</b><br>"
+        +"Caso necessário, arraste para ajustar o local.<br>"
+        +values.street+", "+values.housenumber+"<br>"+values.county+" - "+values.state;
+
+        mainMap.marker=L.marker(
+            [location.lat,location.lng],
+            {
+                draggable: true, // Make the icon dragable
+                title: "Caso necessário, arraste para ajustar o local.", // Add a title
+                opacity: 0.8,
+                icon: markerIcon // here assign the markerIcon var
+            }
+        )
+        .addTo(mainMap.map)
+        .bindPopup(popupInfo)
+        .openPopup();
+        var ll = [ mainMap.marker.getLatLng() ];
+        var bbox = L.latLngBounds(ll);
+        mainMap.map.fitBounds(bbox);
+    },
+
+    getMarkerLocation:()=>{
+        return mainMap.marker.getLatLng();
     },
 
     addAttribution:()=>{

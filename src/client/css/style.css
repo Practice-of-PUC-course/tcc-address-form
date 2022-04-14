@@ -21,3 +21,17 @@
     width: 90%;
     padding-left: 25px;
 }
+#save-btn{
+    display: none;
+    position: absolute;
+    right: 15px;
+}
+#geocode-btn{
+    display: none;
+}
+.username{
+    width: 280px;
+    height: 32px;
+    display: inline-block;
+    padding-top: 0px;
+}

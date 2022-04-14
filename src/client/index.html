@@ -50,30 +50,35 @@
 									
 									<div class="btn-group">
 										<button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-											Usuários (selecione)
+											usuários (selecione)
 										</button>
 										<div id="useritens" class="dropdown-menu"></div>
-									</div><br />
+									</div>
+									<input type="string" class="form-control username" disabled="disabled">
+									<br />
 
 									<label for="street">
 										logradouro
 									</label>
-									<input type="string" class="form-control" id="street">
+									<input type="string" class="form-control" id="street" value="Rua Dom José Gaspar">
 									<label for="housenumber">
 										número
 									</label>
-									<input type="number" class="form-control" id="housenumber">
+									<input type="number" class="form-control" id="housenumber" value="290">
 									<label for="county">
 										município
 									</label>
-									<input type="string" class="form-control" id="county">
+									<input type="string" class="form-control" id="county" value="Belo Horizonte">
 									<label for="state">
 										estado
 									</label>
-									<input type="string" class="form-control" id="state">
+									<input type="string" class="form-control" id="state" value="Minas Gerais">
 								</div>
 								<button id="geocode-btn" class="btn btn-primary">
 									procurar localização
+								</button>
+								<button id="save-btn" class="btn btn-success">
+									guardar endereço
 								</button>
 							</div>
 							
