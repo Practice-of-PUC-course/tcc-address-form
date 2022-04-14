@@ -174,6 +174,9 @@ var mainMap={
         .addTo(mainMap.map)
         .bindPopup(popupInfo)
         .openPopup();
+        mainMap.marker.on('dragend', (ev)=>{
+            controlForm.enableSaveBtn();
+        });
         var ll = [ mainMap.marker.getLatLng() ];
         var bbox = L.latLngBounds(ll);
         mainMap.map.fitBounds(bbox);
