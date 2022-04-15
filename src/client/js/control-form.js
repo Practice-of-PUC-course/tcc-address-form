@@ -22,6 +22,7 @@
         };
         $('.username').val(user.name);
         controlForm.userdata.user=user;
+        controlForm.userdata.address={}// reset address
         address.getAddress(user.id, (res)=>{
             if(res && user.id==res.userId){
                 let values={
